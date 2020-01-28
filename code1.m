@@ -9,7 +9,7 @@ for l = 1:1e6
     img=snapshot(cam);
     %subplot(2,2,1);
     imshow(img);
-    bi=im2bw(img,0.99);
+    bi=im2bw(img,0.99);   %arbitrary limit set 
     bi=bwareaopen(bi,20);
     bi=imfill(bi,'holes');
     
@@ -22,13 +22,13 @@ for l = 1:1e6
   allAreas = [measurements.Area];
   [mValue, mIndex]=max(allAreas);
   k=mIndex;
+  
+  %To create a rectangle on the biggest Area
   if(k>0)
-
   thisBB = measurements(k).BoundingBox;
     all_box(k) = thisBB(3)*thisBB(4);
     rectangle('Position', [thisBB(1),thisBB(2),thisBB(3),thisBB(4)],...
     'EdgeColor','b','LineWidth',2 )
-
     xval=thisBB(1)+(thisBB(3)/2)
   end
  
